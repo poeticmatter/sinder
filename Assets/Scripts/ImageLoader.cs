@@ -35,7 +35,6 @@ public static class ImageLoader
 
     public static bool IsCached(string imageUrl)
 	{
-        Debug.Log(CachePath);
         return File.Exists(CachePath + GetCachedFileName(imageUrl));
     }
 
