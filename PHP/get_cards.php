@@ -26,9 +26,9 @@
 	}
 	$getcardsquery = "SELECT id, card_title, front_image, rarity FROM cards WHERE ";
 	if ($expansionNumber == 452) {
-		$getcardsquery = $getcardsquery . "(expansion=452 OR expansion=453) AND house='" . $house . "';";
+		$getcardsquery = $getcardsquery . "(expansion=452 OR expansion=453);";
 	} else {
-		$getcardsquery = $getcardsquery . "expansion=" . $expansionNumber . " AND house='" . $house . "';";
+		$getcardsquery = $getcardsquery . "expansion=" . $expansionNumber . ";";
 	}
 	$getcards = mysqli_query($con, $getcardsquery) or die("2 - name check query failed");
 	$data = array();
@@ -38,5 +38,5 @@
 	$root = array('cardsArray' => $data );
 	header('Content-Type: application/json');
 	echo json_encode($root);
-
+	
 ?>

@@ -17,21 +17,37 @@ public class MatchingManager : MonoBehaviour
     bool leftLoaded = false;
     bool rightLoaded = false;
 
-    private MatchRecords matchRecords;
+    private TransactionRecords transactionRecords;
 
     void Start ()
 	{
-        matchRecords = new MatchRecords();
+        transactionRecords = new TransactionRecords();
         Utils.ShuffleArray<CardData>(CardsData.instance.cardsArray);
         LoadPair();
+        
     }
 
-    
+    private void PreloadNextPair()
+    {
+        if (currentIndex + 1 < CardsData.instance.cardsArray.Length / 2)
+		{
+            if (!ImageLoader.IsCached(CardsData.instance.cardsArray[LeftIndex + 1].front_image))
+		    {
+                StartCoroutine(ImageLoader.DownloadImage(CardsData.instance.cardsArray[LeftIndex + 1].front_image));
+            }
+            if (!ImageLoader.IsCached(CardsData.instance.cardsArray[RightIndex + 1].front_image))
+            {
+                StartCoroutine(ImageLoader.DownloadImage(CardsData.instance.cardsArray[RightIndex + 1].front_image));
+            }
+        }
+	
+    }
 
     public void LoadPair()
 	{
         ImageLoader.LoadImageTo(CardsData.instance.cardsArray[LeftIndex].front_image, leftButton.image, this);
         ImageLoader.LoadImageTo(CardsData.instance.cardsArray[RightIndex].front_image, rightButton.image, this);
+        PreloadNextPair();
     }
 
     public void ImageLoaded(Image loaded)
@@ -74,7 +90,7 @@ public class MatchingManager : MonoBehaviour
     private void Increment()
 	{
         currentIndex++;
-        if (currentIndex >= RightIndex)
+        if (currentIndex >= CardsData.instance.cardsArray.Length / 2)
 		{
             CallSubmitWins(null);
             currentIndex = 0;
@@ -84,30 +100,23 @@ public class MatchingManager : MonoBehaviour
 
     private void RecordWin(int winnerI, int loserI)
 	{
-        matchRecords.RecordMatch(CardsData.instance.cardsArray[winnerI].id, CardsData.instance.cardsArray[loserI].id);
+        transactionRecords.RecordTransaction(CardsData.instance.cardsArray[winnerI].id, CardsData.instance.cardsArray[loserI].id);
     }
 
     private void CallSubmitWins(Action actionOnDone)
 	{
-        if (matchRecords.records.Count <=0)
+        if (transactionRecords.transactions.Count <=0)
 		{
             return; //Nothing to submit
 		}
-        string jsonString = JsonUtility.ToJson(matchRecords);
-        Debug.Log(jsonString);
-        StartCoroutine(SubmitWins("http://localhost/keyforgedb/insert_wins.php", jsonString, actionOnDone));
-        matchRecords = new MatchRecords();
+        string jsonString = JsonUtility.ToJson(transactionRecords);
+        StartCoroutine(SubmitTransactions("http://localhost/keyforgedb/insert_transactions.php", jsonString, actionOnDone));
+        transactionRecords = new TransactionRecords();
 	}
-    private IEnumerator SubmitWins(string url, string jsonString, Action actionOnDone)
+    private IEnumerator SubmitTransactions(string url, string jsonString, Action actionOnDone)
     {
-       /* var request = new UnityWebRequest(url);
-        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonString);
-        request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-        request.SetRequestHeader("Content-Type", "application/json");
-        yield return request.SendWebRequest();*/
-
         WWWForm form = new WWWForm();
-        form.AddField("wins_data", jsonString);
+        form.AddField("transactions_root", jsonString);
         UnityWebRequest request = UnityWebRequest.Post(url, form);
         yield return request.SendWebRequest();
         if (request.isNetworkError || request.isHttpError)
@@ -116,8 +125,7 @@ public class MatchingManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("All OK");
-            Debug.Log(request.downloadHandler.text);
+            Debug.Log("Submitted Transactions");
             if (actionOnDone!=null)
 			{
                 actionOnDone();

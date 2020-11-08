@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -9,21 +10,44 @@ using UnityEngine.UI;
 public class CardDownloader : MonoBehaviour
 {
     public Dropdown expansionField;
-    public Dropdown houseField;
 
-    public void CallGetCards()
+    public void RankCardsClicked()
     {
-        StartCoroutine(GetCards());
+        StartCoroutine(GetCards(GoToMatching));
     }
 
-    IEnumerator GetCards()
+    public void DisplayRankingClicked()
+    {
+        StartCoroutine(GetCards(GoToDisplay));
+    }
+
+    IEnumerator GetCards(Action onFinish)
     {
         WWWForm form = new WWWForm();
         form.AddField("expansion", expansionField.options[expansionField.value].text);
-        form.AddField("house", houseField.options[houseField.value].text);
         UnityWebRequest request = UnityWebRequest.Post("http://localhost/keyforgedb/get_cards.php", form);
         yield return request.SendWebRequest();
-        CardsData.LoadFromJson(request.downloadHandler.text);
+        if (request.isNetworkError || request.isHttpError)
+        {
+            Debug.Log("Error: " + request.error);
+        }
+        else
+		{
+            Debug.Log("Cards Recieved");
+            CardsData.LoadFromJson(request.downloadHandler.text);
+            onFinish();
+		}
+    }
+
+    private void GoToMatching()
+	{
         SceneManager.LoadScene(1);
     }
+
+    private void GoToDisplay()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+
 }

@@ -8,10 +8,23 @@ public class CardsData
 {
     public static CardsData instance;
     public CardData[] cardsArray;
+    [NonSerialized()]
+    public Dictionary<string, CardData> idToCardData;
 
     public static void LoadFromJson(String text)
 	{
         instance = JsonUtility.FromJson<CardsData>(text);
+        instance.InitDictionary();
+    }
+
+    private void InitDictionary()
+	{
+        idToCardData = new Dictionary<string, CardData>();
+		for (int i = 0; i < cardsArray.Length; i++)
+		{
+            idToCardData.Add(cardsArray[i].id, cardsArray[i]);
+		}
+
     }
 
     public static bool IsLoaded()
@@ -26,4 +39,11 @@ public class CardData
     public string card_title;
     public string front_image;
     public string rarity;
+    [NonSerialized()]
+    public int score = 1500;
+
+	internal int CompareTo(CardData i1)
+	{
+        return score.CompareTo(i1.score);
+	}
 }
