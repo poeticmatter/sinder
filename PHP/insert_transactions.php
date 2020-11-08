@@ -11,7 +11,7 @@
 	$transactions_data_json = $_POST["transactions_root"];
 	$transactions_data = json_decode($transactions_data_json,true);
 
-	$insert_query = "INSERT INTO card_transactions (card_win_id, card_lose_id) VALUES ";
+	$insert_query = "INSERT INTO card_transactions (card_win_id, card_lose_id, expansion) VALUES ";
 	$first = true;
 	foreach($transactions_data['transactions'] as $record) {
 		if ($first) {
@@ -19,7 +19,7 @@
 		} else {
 			$insert_query = $insert_query . ",";
 		}
-		$insert_query = $insert_query . "('" . $record['card_win_id'] . "','" . $record['card_lose_id'] . "')";
+		$insert_query = $insert_query . "('" . $record['card_win_id'] . "','" . $record['card_lose_id'] . "','" . $record['expansion']. "')";
 	}
 	$insert_query = $insert_query . ";";
 

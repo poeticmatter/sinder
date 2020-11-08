@@ -8,22 +8,9 @@
 		exit();
 	}
 
-	$expansionName= $_POST["expansion"];
+	$expansionNumber= $_POST["expansion"];
 	$house = $_POST["house"];
 
-	$expansionNumber = 0;
-	if ($expansionName == "Call of the Archons") {
-		$expansionNumber = 341;
-	}
-	if ($expansionName == "Age of Ascension") {
-		$expansionNumber = 435;
-	}
-	if ($expansionName == "Worlds Collide") {
-		$expansionNumber = 452;
-	}
-	if ($expansionName == "Mass Mutation") {
-		$expansionNumber = 479;
-	}
 	$getcardsquery = "SELECT id, card_title, front_image, rarity FROM cards WHERE ";
 	if ($expansionNumber == 452) {
 		$getcardsquery = $getcardsquery . "(expansion=452 OR expansion=453);";

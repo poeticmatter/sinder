@@ -10,6 +10,8 @@ public class CardsData
     public CardData[] cardsArray;
     [NonSerialized()]
     public Dictionary<string, CardData> idToCardData;
+    [NonSerialized()]
+    public static int expansion;
 
     public static void LoadFromJson(String text)
 	{

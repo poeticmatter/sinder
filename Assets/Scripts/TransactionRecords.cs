@@ -8,10 +8,11 @@ public class TransactionRecords
 {
     public List<Transaction> transactions;
 
+
     public TransactionRecords()
 	{
         transactions = new List<Transaction>();
-	}
+    }
 
     public void RecordTransaction(string win, string loss)
 	{
@@ -30,11 +31,13 @@ public class Transaction
 {
     public string card_win_id;
     public string card_lose_id;
+    public int expansion;
 
     public Transaction (string win, string loss)
 	{
         this.card_win_id = win;
         this.card_lose_id = loss;
+        this.expansion = CardsData.expansion;
 	}
 
 }

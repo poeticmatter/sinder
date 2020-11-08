@@ -8,7 +8,14 @@
 		exit();
 	}
 
-	$gettransactionsquery = "SELECT * FROM card_transactions";
+	$expansionNumber= $_POST["expansion"];
+
+	$gettransactionsquery = "SELECT * FROM card_transactions WHERE";
+	if ($expansionNumber == 452) {
+		$gettransactionsquery = $getcardsquery . "(expansion=452 OR expansion=453);";
+	} else {
+		$gettransactionsquery = $getcardsquery . "expansion=" . $expansionNumber . ";";
+	}
 
 	$gettractions = mysqli_query($con, $gettransactionsquery) or die("2 - get transactions query failed");
 	$data = array();
