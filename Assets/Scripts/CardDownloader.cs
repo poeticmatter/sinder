@@ -26,11 +26,16 @@ public class CardDownloader : MonoBehaviour
         StartCoroutine(GetCards(GoToDisplay));
     }
 
+    public void QuitClicked()
+	{
+        Application.Quit();
+	}
+
     IEnumerator GetCards(Action onFinish)
     {
         WWWForm form = new WWWForm();
         form.AddField("expansion", expansionNumbers[expansionField.value]);
-        UnityWebRequest request = UnityWebRequest.Post("http://localhost/keyforgedb/get_cards.php", form);
+        UnityWebRequest request = UnityWebRequest.Post(URLs.GET_CARDS, form);
         yield return request.SendWebRequest();
         if (request.isNetworkError || request.isHttpError)
         {
@@ -52,8 +57,7 @@ public class CardDownloader : MonoBehaviour
 
     private void GoToDisplay()
     {
-        SceneManager.LoadScene(2);
+        Application.OpenURL(URLs.CARD_RANKING +"?expansion="+ expansionNumbers[expansionField.value]);
     }
-
 
 }

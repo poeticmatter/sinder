@@ -92,9 +92,12 @@ public class MatchingManager : MonoBehaviour
         currentIndex++;
         if (currentIndex >= CardsData.instance.cardsArray.Length / 2)
 		{
-            CallSubmitWins(null);
             currentIndex = 0;
             Utils.ShuffleArray<CardData>(CardsData.instance.cardsArray);
+        }
+        if (currentIndex % 25 ==0)
+		{
+            CallSubmitWins(null);
         }
 	}
 
@@ -110,7 +113,7 @@ public class MatchingManager : MonoBehaviour
             return; //Nothing to submit
 		}
         string jsonString = JsonUtility.ToJson(transactionRecords);
-        StartCoroutine(SubmitTransactions("http://localhost/keyforgedb/insert_transactions.php", jsonString, actionOnDone));
+        StartCoroutine(SubmitTransactions(URLs.INSERT_TRANSACTIONS, jsonString, actionOnDone));
         transactionRecords = new TransactionRecords();
 	}
     private IEnumerator SubmitTransactions(string url, string jsonString, Action actionOnDone)

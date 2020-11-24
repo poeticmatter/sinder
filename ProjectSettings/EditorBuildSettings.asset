@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RankingCards.unity
     guid: 575b1a9ea64bec244b2aff81d248ed0b
-  - enabled: 1
-    path: Assets/Scenes/DisplayRanking.unity
-    guid: 68955b41e4ce520479d739f0b50c4b4c
   m_configObjects: {}

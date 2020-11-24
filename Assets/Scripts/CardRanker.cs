@@ -19,7 +19,7 @@ public class CardRanker : MonoBehaviour
     IEnumerator GetTransactions(Action onFinish)
     {
         WWWForm form = new WWWForm();
-        UnityWebRequest request = UnityWebRequest.Post("http://localhost/keyforgedb/get_transaction_records.php", form);
+        UnityWebRequest request = UnityWebRequest.Post(URLs.GET_TRANSACTIONS, form);
         yield return request.SendWebRequest();
         if (request.isNetworkError || request.isHttpError)
         {
