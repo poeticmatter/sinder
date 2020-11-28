@@ -13,7 +13,7 @@ public static class ImageLoader
 
     public static void LoadImageTo(CardData card, Image toImage)
     {
-        Texture2D texture = Resources.Load<Texture2D>("Cards/" + card.expansion + "/" + card.house + "/" + card.id);
+        Texture2D texture = Resources.Load<Texture2D>("Cards/" + CardsData.expansion + "/" + card.house + "/" + card.id);
         AssignTextureToImage(texture, toImage);
     }
 
