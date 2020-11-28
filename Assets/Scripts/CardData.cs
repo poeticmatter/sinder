@@ -41,6 +41,7 @@ public class CardData
     public string card_title;
     public string front_image;
     public string rarity;
+    public string house;
     [NonSerialized()]
     public int score = 1500;
 

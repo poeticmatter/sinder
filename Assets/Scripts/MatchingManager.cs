@@ -14,8 +14,6 @@ public class MatchingManager : MonoBehaviour
     private int currentIndex = 0;
     private int LeftIndex { get { return currentIndex; } }
     private int RightIndex { get { return currentIndex + CardsData.instance.cardsArray.Length / 2; } }
-    bool leftLoaded = false;
-    bool rightLoaded = false;
 
     private TransactionRecords transactionRecords;
 
@@ -27,46 +25,12 @@ public class MatchingManager : MonoBehaviour
         
     }
 
-    private void PreloadNextPair()
-    {
-        if (currentIndex + 1 < CardsData.instance.cardsArray.Length / 2)
-		{
-            if (!ImageLoader.IsCached(CardsData.instance.cardsArray[LeftIndex + 1].front_image))
-		    {
-                StartCoroutine(ImageLoader.DownloadImage(CardsData.instance.cardsArray[LeftIndex + 1].front_image));
-            }
-            if (!ImageLoader.IsCached(CardsData.instance.cardsArray[RightIndex + 1].front_image))
-            {
-                StartCoroutine(ImageLoader.DownloadImage(CardsData.instance.cardsArray[RightIndex + 1].front_image));
-            }
-        }
-	
-    }
-
     public void LoadPair()
 	{
-        ImageLoader.LoadImageTo(CardsData.instance.cardsArray[LeftIndex].front_image, leftButton.image, this);
-        ImageLoader.LoadImageTo(CardsData.instance.cardsArray[RightIndex].front_image, rightButton.image, this);
-        PreloadNextPair();
+        ImageLoader.LoadImageTo(CardsData.instance.cardsArray[LeftIndex], leftButton.image);
+        ImageLoader.LoadImageTo(CardsData.instance.cardsArray[RightIndex], rightButton.image);
     }
 
-    public void ImageLoaded(Image loaded)
-	{
-        if (leftButton.image == loaded)
-		{
-            leftLoaded = true;
-		} else if (rightButton.image == loaded)
-		{
-            rightLoaded = true;
-		}
-        if (leftLoaded && rightLoaded)
-		{
-            leftButton.interactable = true;
-            rightButton.interactable = true;
-            leftLoaded = false;
-            rightLoaded = false;
-		}
-	}
 
     public void LeftClicked()
 	{
@@ -80,8 +44,6 @@ public class MatchingManager : MonoBehaviour
 
     private void DoClick(int winI, int lossI)
 	{
-        leftButton.interactable = false;
-        rightButton.interactable = false;
         RecordWin(winI, lossI);
         Increment();
         LoadPair();
@@ -129,11 +91,8 @@ public class MatchingManager : MonoBehaviour
         else
         {
             Debug.Log("Submitted Transactions");
-            if (actionOnDone!=null)
-			{
-                actionOnDone();
-			}
-        }
+			actionOnDone?.Invoke();
+		}
 
     }
 
