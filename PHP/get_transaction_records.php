@@ -1,6 +1,6 @@
 <?php
 
-	$con = mysqli_connect('localhost', 'root', 'root', 'keyforgedb');
+	$con = mysqli_connect('mysql.timeshapers.com', 'meow2', 'VSmMTjdBx5GM6*H', 'sinderkeyforgedb');
 
 	if (mysqli_connect_errno())
 	{

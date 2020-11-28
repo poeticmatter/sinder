@@ -1,9 +1,3 @@
-<html>
- <head>
-  <title>PHP Test</title>
- </head>
- <body>
-
 <?php
 	
 	$con = mysqli_connect('localhost', 'root', 'root', 'keyforgedb');
@@ -71,12 +65,4 @@
 
 
 
-
-	
-
-	
-
 ?>
-
-</body>
-</html>

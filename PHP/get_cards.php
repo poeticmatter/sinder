@@ -9,7 +9,6 @@
 	}
 
 	$expansionNumber= $_POST["expansion"];
-	$house = $_POST["house"];
 
 	$getcardsquery = "SELECT id, card_title, front_image, rarity FROM cards WHERE ";
 	if ($expansionNumber == 452) {
