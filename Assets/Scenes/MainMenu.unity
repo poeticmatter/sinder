@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 392488213}
   - component: {fileID: 392488212}
   - component: {fileID: 392488211}
+  - component: {fileID: 392488214}
   m_Layer: 5
   m_Name: Show MM
   m_TagString: Untagged
@@ -479,8 +480,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 384569427}
-        m_MethodName: DisplayRankingClicked
+      - m_Target: {fileID: 0}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -526,6 +527,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392488209}
   m_CullTransparentMesh: 0
+--- !u!114 &392488214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392488209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c75e44714421d04f8fcd6e34cd2f498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 384569427}
+        m_MethodName: DisplayRankingClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &510022532
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +764,7 @@ GameObject:
   - component: {fileID: 552647282}
   - component: {fileID: 552647281}
   - component: {fileID: 552647280}
+  - component: {fileID: 552647283}
   m_Layer: 5
   m_Name: Show WC
   m_TagString: Untagged
@@ -807,8 +835,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 384569427}
-        m_MethodName: DisplayRankingClicked
+      - m_Target: {fileID: 0}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -854,6 +882,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552647278}
   m_CullTransparentMesh: 0
+--- !u!114 &552647283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552647278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c75e44714421d04f8fcd6e34cd2f498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 384569427}
+        m_MethodName: DisplayRankingClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &813225832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1147,7 @@ GameObject:
   - component: {fileID: 883825803}
   - component: {fileID: 883825802}
   - component: {fileID: 883825801}
+  - component: {fileID: 883825804}
   m_Layer: 5
   m_Name: GitHub
   m_TagString: Untagged
@@ -1163,8 +1218,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 384569427}
-        m_MethodName: GotoGitHub
+      - m_Target: {fileID: 0}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1210,6 +1265,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883825799}
   m_CullTransparentMesh: 0
+--- !u!114 &883825804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883825799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c75e44714421d04f8fcd6e34cd2f498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 384569427}
+        m_MethodName: GotoGitHub
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1007866258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,6 +1369,7 @@ GameObject:
   - component: {fileID: 1030494416}
   - component: {fileID: 1030494415}
   - component: {fileID: 1030494414}
+  - component: {fileID: 1030494417}
   m_Layer: 5
   m_Name: Show CotA
   m_TagString: Untagged
@@ -1358,8 +1440,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 384569427}
-        m_MethodName: DisplayRankingClicked
+      - m_Target: {fileID: 0}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1405,6 +1487,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030494412}
   m_CullTransparentMesh: 0
+--- !u!114 &1030494417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030494412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c75e44714421d04f8fcd6e34cd2f498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 384569427}
+        m_MethodName: DisplayRankingClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1085882518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1654,7 @@ GameObject:
   - component: {fileID: 1296558046}
   - component: {fileID: 1296558045}
   - component: {fileID: 1296558044}
+  - component: {fileID: 1296558047}
   m_Layer: 5
   m_Name: Show AoA
   m_TagString: Untagged
@@ -1616,8 +1725,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 384569427}
-        m_MethodName: DisplayRankingClicked
+      - m_Target: {fileID: 0}
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1663,6 +1772,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296558042}
   m_CullTransparentMesh: 0
+--- !u!114 &1296558047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296558042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c75e44714421d04f8fcd6e34cd2f498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 384569427}
+        m_MethodName: DisplayRankingClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1400343524
 GameObject:
   m_ObjectHideFlags: 0

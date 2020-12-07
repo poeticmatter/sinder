@@ -1,6 +1,7 @@
-﻿using System.Runtime.InteropServices;
+﻿using UnityEngine;
+using System.Runtime.InteropServices;
 
-public class LinkOpener
+public class LinkOpener : MonoBehaviour
 {
 
     public static void OpenLinkJSPlugin(string url)

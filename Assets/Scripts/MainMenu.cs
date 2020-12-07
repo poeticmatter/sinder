@@ -1,15 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public class TextUpdateEvent : UnityEvent<Text, string>
-    {
-    }
+    [Serializable]
+    public class TextUpdateEvent : UnityEvent<Text, string> { }
 
     public Text[] showRankingButtonText;
 	void Start()
@@ -58,7 +59,7 @@ public class MainMenu : MonoBehaviour
 
     private void GoToDisplay()
     {
-        LinkOpener.OpenLinkJSPlugin(URLs.CARD_RANKING + "?expansion=" + expansionNumbers[expnasionIndexUsed]);
+        LinkOpener.OpenLinkJSPlugin(URLs.CARD_RANKING + " ? expansion=" + expansionNumbers[expnasionIndexUsed]);
     }
 
     private void UpdateButtonText(Text text, string count)
@@ -70,5 +71,4 @@ public class MainMenu : MonoBehaviour
 	{
         LinkOpener.OpenLinkJSPlugin("https://github.com/poeticmatter/sinder");
 	}
-
 }
