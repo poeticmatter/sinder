@@ -58,11 +58,17 @@ public class MainMenu : MonoBehaviour
 
     private void GoToDisplay()
     {
-        Application.OpenURL(URLs.CARD_RANKING + "?expansion=" + expansionNumbers[expnasionIndexUsed]);
+        LinkOpener.OpenLinkJSPlugin(URLs.CARD_RANKING + "?expansion=" + expansionNumbers[expnasionIndexUsed]);
     }
 
     private void UpdateButtonText(Text text, string count)
 	{
         text.text = text.text.Replace("000", count);
     }
+
+    public void GotoGitHub()
+	{
+        LinkOpener.OpenLinkJSPlugin("https://github.com/poeticmatter/sinder");
+	}
+
 }
