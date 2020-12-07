@@ -72,6 +72,7 @@ public class MatchingManager : MonoBehaviour
 	{
         if (transactionRecords.transactions.Count <=0)
 		{
+            actionOnDone?.Invoke();
             return; //Nothing to submit
 		}
         string jsonString = JsonUtility.ToJson(transactionRecords);
