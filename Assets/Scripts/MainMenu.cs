@@ -1,10 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public class TextUpdateEvent : UnityEvent<Text, string>
+    {
+    }
+
+    public Text[] showRankingButtonText;
+	void Start()
+	{
+        FireGetRankingCount(0);
+        FireGetRankingCount(1);
+        FireGetRankingCount(2);
+        FireGetRankingCount(3);
+    }
+
+    private void FireGetRankingCount(int expansionIndex)
+	{
+        UnityEvent<Text, string> updateEvent = new TextUpdateEvent();
+        updateEvent.AddListener(UpdateButtonText);
+        StartCoroutine(RankingCounter.GetRankingCount(expansionNumbers[expansionIndex], showRankingButtonText[expansionIndex], updateEvent));
+    }
 	public int expnasionIndexUsed { get; private set; }
 
     //341 = CotA
@@ -38,5 +59,10 @@ public class MainMenu : MonoBehaviour
     private void GoToDisplay()
     {
         Application.OpenURL(URLs.CARD_RANKING + "?expansion=" + expansionNumbers[expnasionIndexUsed]);
+    }
+
+    private void UpdateButtonText(Text text, string count)
+	{
+        text.text = text.text.Replace("000", count);
     }
 }

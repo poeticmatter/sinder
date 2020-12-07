@@ -23,8 +23,8 @@ public class CardDownloader
             Debug.Log("Cards Recieved");
             CardsData.LoadFromJson(request.downloadHandler.text);
             CardsData.expansion = expansionNumber;
-            onFinish();
-		}
+            onFinish?.Invoke();
+        }
     }
 
 

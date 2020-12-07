@@ -9,8 +9,7 @@ using UnityEngine.UI;
 public static class ImageLoader
 {
     private static string CachePath { get { return Application.persistentDataPath; } }
-    private static bool imageLoading = false;
-
+    
     public static void LoadImageTo(CardData card, Image toImage)
     {
         Texture2D texture = Resources.Load<Texture2D>("Cards/" + CardsData.expansion + "/" + card.house + "/" + card.id);

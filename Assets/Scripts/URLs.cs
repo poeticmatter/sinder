@@ -11,4 +11,5 @@ public class URLs
     public const string INSERT_TRANSACTIONS = MAIN + "insert_transactions.php";
     public const string GET_TRANSACTIONS = MAIN + "get_transaction_records.php";
     public const string CARD_RANKING = MAIN + "card_ranking.php";
+    public const string RANKING_COUNT = MAIN + "ranking_count.php";
 }
