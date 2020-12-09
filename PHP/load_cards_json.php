@@ -22,6 +22,7 @@
 		$id = "";
 		$is_maverick = "";
 		$is_enhanced = "";
+		$is_anomaly = "";
    		foreach ($block_data as $key => $value) {
    			if ($key == 'house') {
    				$house = mysqli_real_escape_string($con, $value);
@@ -50,7 +51,18 @@
    			if ($key == 'is_enhanced') {
    				$is_enhanced = $value;
    			}
+   			if ($key == 'is_anomaly') {
+   				$is_anomaly = $value;
+   			}
 		}
+		if ($is_anomaly) {
+   			if ($house == 'Logos') {
+   				$expansion = 452;
+   				$house = 'Anomaly';
+   			} else {
+   				continue;
+   			}
+   		}
 		if (!$is_maverick && !$is_enhanced) {
 			$row_count++;
 			echo $card_title . " " . $house . "<br>";

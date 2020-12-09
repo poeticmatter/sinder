@@ -9,9 +9,8 @@ public class DownloadAllmages : MonoBehaviour
     //341 = CotA
     //425 = AoA
     //452 = WC
-    //453 = Anomalies
     //479 = MM
-    private static int[] expansionNumbers = new int[] { 341, 435, 452, 453, 479 };
+    private static int[] expansionNumbers = new int[] { 341, 435, 452, 479 };
     void Start()
     {
         StartCoroutine(GetALLCards());

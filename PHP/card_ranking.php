@@ -6,22 +6,14 @@
 <body>
 <?php
 
-	function get_expansion_where($expansionNumber) {
-		if ($expansionNumber == 452) {
-			return "(expansion=452 OR expansion=453);";
-		} else {
-			return "expansion=" . $expansionNumber . ";";
-		}
-	}
-
 	function get_transactions($con, $expansionNumber) {
-		$gettransactionsquery = "SELECT * FROM card_transactions WHERE " . get_expansion_where($expansionNumber);
+		$gettransactionsquery = "SELECT * FROM card_transactions WHERE " . $expansionNumber;
 		$gettransaction = mysqli_query($con, $gettransactionsquery) or trigger_error(mysqli_error($con), E_USER_ERROR);
 		return $gettransaction;
 	}
 
 	function get_cards($con, $expansionNumber) {
-		$getcardsquery = "SELECT id, card_title FROM cards WHERE " . get_expansion_where($expansionNumber);
+		$getcardsquery = "SELECT id, card_title FROM cards WHERE " . $expansionNumber;
 		$getcards = mysqli_query ($con, $getcardsquery) or trigger_error(mysqli_error($con), E_USER_ERROR);
 		return $getcards;
 	}

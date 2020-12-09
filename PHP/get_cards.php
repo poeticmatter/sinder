@@ -11,15 +11,10 @@
 	$expansionNumber= $_POST["expansion"];
 	$getcardsquery = "SELECT id, card_title, front_image, rarity, house FROM cards";
 	if ($expansionNumber != "ALL") {
-		$getcardsquery = $getcardsquery . " WHERE ";
-		if ($expansionNumber == 452) {
-			$getcardsquery = $getcardsquery . "(expansion=452 OR expansion=453);";
-		} else {
-			$getcardsquery = $getcardsquery . "expansion=" . $expansionNumber . ";";
-		}
+		$getcardsquery = $getcardsquery . " WHERE expansion=" . $expansionNumber . ";";
 	}
 	
-	$getcards = mysqli_query($con, $getcardsquery) or die("2 - name check query failed");
+	$getcards = mysqli_query($con, $getcardsquery) or die("2 - get cards query failed");
 	$data = array();
 	while($row = mysqli_fetch_assoc($getcards)) {
     	$data[] = $row;
