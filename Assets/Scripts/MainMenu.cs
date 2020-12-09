@@ -27,7 +27,6 @@ public class MainMenu : MonoBehaviour
         updateEvent.AddListener(UpdateButtonText);
         StartCoroutine(RankingCounter.GetRankingCount(expansionNumbers[expansionIndex], showRankingButtonText[expansionIndex], updateEvent));
     }
-	public int expnasionIndexUsed { get; private set; }
 
     //341 = CotA
     //425 = AoA
@@ -37,14 +36,7 @@ public class MainMenu : MonoBehaviour
 
     public void RankCardsClicked(int expnasionIndex)
     {
-        expnasionIndexUsed = expnasionIndex;
         StartCoroutine(CardDownloader.GetCards(expansionNumbers[expnasionIndex], GoToMatching));
-    }
-
-    public void DisplayRankingClicked(int expnasionIndex)
-    {
-        expnasionIndexUsed = expnasionIndex;
-        StartCoroutine(CardDownloader.GetCards(expansionNumbers[expnasionIndex], GoToDisplay));
     }
 
     public void QuitClicked()
@@ -57,9 +49,9 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    private void GoToDisplay()
+    public void DisplayRankingClicked(int expansionIndex)
     {
-        LinkOpener.OpenLinkJSPlugin(URLs.CARD_RANKING + " ? expansion=" + expansionNumbers[expnasionIndexUsed]);
+        LinkOpener.OpenLinkJSPlugin(URLs.CARD_RANKING + "?expansion=" + expansionNumbers[expansionIndex]);
     }
 
     private void UpdateButtonText(Text text, string count)
