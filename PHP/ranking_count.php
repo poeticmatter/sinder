@@ -4,11 +4,10 @@
 
 	if (mysqli_connect_errno())
 	{
-		echo "1 - connection failed";
-		exit();
+		trigger_error(mysqli_error($con), E_USER_ERROR);
 	}
 
-	$expansionNumber= $_POST["expansion"];
+	$expansionNumber= $_REQUEST["expansion"];
 	$rankingcountquery = "SELECT COUNT(*) FROM `card_transactions`";
 	if ($expansionNumber != "ALL") {
 		$rankingcountquery = $rankingcountquery . " WHERE expansion=" . $expansionNumber . ";";

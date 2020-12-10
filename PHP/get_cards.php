@@ -8,7 +8,7 @@
 		exit();
 	}
 
-	$expansionNumber= $_POST["expansion"];
+	$expansionNumber= $_REQUEST["expansion"];
 	$getcardsquery = "SELECT id, card_title, front_image, rarity, house FROM cards";
 	if ($expansionNumber != "ALL") {
 		$getcardsquery = $getcardsquery . " WHERE expansion=" . $expansionNumber . ";";

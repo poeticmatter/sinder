@@ -30,7 +30,7 @@
 		trigger_error(mysqli_error($con), E_USER_ERROR);
 	}
 
-	$expansionNumber = $_GET["expansion"];
+	$expansionNumber = $_REQUEST["expansion"];
 
 	
 	$cardsresults = get_cards($con, $expansionNumber);

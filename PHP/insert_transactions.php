@@ -8,7 +8,7 @@
 		exit();
 	}
 
-	$transactions_data_json = $_POST["transactions_root"];
+	$transactions_data_json = $_REQUEST["transactions_root"];
 	$transactions_data = json_decode($transactions_data_json,true);
 
 	$insert_query = "INSERT INTO card_transactions (card_win_id, card_lose_id, expansion) VALUES ";

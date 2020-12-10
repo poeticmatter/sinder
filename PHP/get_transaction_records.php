@@ -1,6 +1,6 @@
 <?php
 
-	$con = mysqli_connect('mysql.timeshapers.com', 'meow2', 'VSmMTjdBx5GM6*H', 'sinderkeyforgedb');
+	$con = mysqli_connect('localhost', 'root', 'root', 'keyforgedb');
 
 	if (mysqli_connect_errno())
 	{
@@ -8,7 +8,7 @@
 		exit();
 	}
 
-	$expansionNumber= $_POST["expansion"];
+	$expansionNumber= $_REQUEST["expansion"];
 
 	$gettransactionsquery = "SELECT * FROM card_transactions WHERE expansion=" . $expansionNumber . ";";
 
