@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class URLs
 {
-    public const string TIMESHAPERS = "http://sinder.timeshapers.com/";
-    public const string DEV = "http://localhost/keyforgedb/";
+    public const string TIMESHAPERS = "https://sinder.timeshapers.com/";
+    public const string DEV = "https://localhost/keyforgedb/";
     public const string MAIN = TIMESHAPERS;
     public const string GET_CARDS = MAIN + "get_cards.php";
     public const string INSERT_TRANSACTIONS = MAIN + "insert_transactions.php";
