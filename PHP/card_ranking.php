@@ -7,13 +7,13 @@
 <?php
 
 	function get_transactions($con, $expansionNumber) {
-		$gettransactionsquery = "SELECT * FROM card_transactions WHERE " . $expansionNumber;
+		$gettransactionsquery = "SELECT * FROM card_transactions WHERE expansion=" . $expansionNumber . ";";
 		$gettransaction = mysqli_query($con, $gettransactionsquery) or trigger_error(mysqli_error($con), E_USER_ERROR);
 		return $gettransaction;
 	}
 
 	function get_cards($con, $expansionNumber) {
-		$getcardsquery = "SELECT id, card_title FROM cards WHERE " . $expansionNumber;
+		$getcardsquery = "SELECT id, card_title FROM cards WHERE expansion=" . $expansionNumber . ";";
 		$getcards = mysqli_query ($con, $getcardsquery) or trigger_error(mysqli_error($con), E_USER_ERROR);
 		return $getcards;
 	}
